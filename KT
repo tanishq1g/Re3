@@ -1,0 +1,165 @@
+Yolov3
+
+CPU 
+/home/hdd1/midhilesh/DEEPMOT/DETRAC-train-data/script
+Detector.py -- CPU version -- make object and call localisation
+check.py -- demo code Yolov3 cpu for single frame
+check.py -- demo code Yolov3 cpu for folder with many frames
+Occlusion Videos
+
+DARKNET BASED yolov3
+/home/hdd1/midhilesh/darknet/python/darknet.py - runs on whole folder
+
+YOLOV3 GPU
+/home/hdd1/midhilesh/deep_sort_pytorch/YOLOv3 -- DEEP SORT AUTHOR'S yolov3 for gpu
+DEEPMOT
+
+/home/hdd1/midhilesh/DEEPMOT/xml2csv.py -- converts xml to MOT format (txt file) 
+
+Yolov3 + deepMOT for electronic city dataset -- /home/hdd1/midhilesh/deepMOT/siemensDeepMOT.py
+Yolov3 + deepMOT for DETTRAC dataset with yolov3 sequentially-- /home/hdd1/midhilesh/deepMOT/sample_tracking.py
+deepMOT for DETTRAC dataset and uses GT as Detections -- /home/hdd1/midhilesh/deepMOT/tracking_on_mot.py
+
+
+DEEPSORT
+
+sudo nvidia-docker run -it --rm --name deepsort -p 6001:8888 -v /home/hdd1/midhilesh/:/workspace/midhilesh/ -e NVIDIA_VISIBLE_DEVICES=1 nvcr.io/nvidia/pytorch:19.06-py3
+/home/hdd1/midhilesh/deep_sort_pytorch/demo_yolo3_deepsort.py
+
+
+RE3
+
+pass bounding boxes in xyxy format
+/home/hdd1/midhilesh/Re3/demo/image_demo.py  --  SINGLE OBJECT TRACKING
+/home/hdd1/midhilesh/Re3/demo/batch_demo.py  --  MULTIPLE OBJECT TRACKING
+
+
+SORT
+
+/home/hdd1/midhilesh/SORT/test.py -- yolov3 + SORT -- yolov3 is fastest 50fps but less accuracy
+
+
+BELLS AND WHISTLES
+
+/home/hdd1/midhilesh/tracking_wo_bnw
+
+
+YOLOV3 + RE3
+
+sudo nvidia-docker run -it --rm --name re3 -v /home/hdd1/midhilesh/:/workspace/midhilesh/ -e NVIDIAVISIBLE_DEVICES=1 -p 6500:8888 nvcr.io/nvidia/tensorflow:19.08-py3
+
+/home/hdd1/midhilesh/yolov3+re3/yolov3_re3.py -- SEQUENTIAL Yolov3 + re3 -- memory error -- weights loaded twice -- our own code
+/home/hdd1/midhilesh/yolov3+re3/sample_yolov3_re3.py -- pass text file of detections and run it -- 21 fps -- our own code
+
+
+DATASETS
+
+/home/hdd1/midhilesh/DEEPMOT/DETRAC-train-data/Insight-MVT_Annotation_Train -- DETRAC DATASET -- VIDEOS FOLDERS -- DET, GT, IMG1 folders
+/home/hdd1/midhilesh/DEEPMOT/DETRAC-Train-Annotations-XML-v3 -- DETRAC DATASET GROUND TRUTHS xml files
+DETRAC DATASET -- /home/hdd1/midhilesh/DEEPMOT/test -- /home/hdd1/midhilesh/DEEPMOT/train
+/home/hdd1/midhilesh/ansImage - ELECTRONIC DATASET 1 - silkboard
+/home/hdd1/midhilesh/ansImage1 - ELECTRONIC DATASET 2 - silkboard
+/home/hdd1/midhilesh/siemens_images - ELECTRONIC CITY - SIEMENS FRONT
+/home/hdd1/midhilesh/siemens video
+/home/hdd1/midhilesh/kitti -- vehicle tracking dataset
+/home/hdd1/midhilesh/idd-detection(1).tar.gz -- indian dataset
+/home/hdd1/midhilesh/MOT17.zip -- MOT17 DATASET
+
+
+IMPORTANT
+
+img2video -- /home/hdd1/midhilesh/yolov3+re3/img2video.py
+video2img -- /home/hdd1/midhilesh/video2image.py
+UNKNOW STATUS
+/home/hdd1/midhilesh/bells
+
+DOCKER
+
+NVIDIA FRAMEWORK MATRIX:
+https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&uact=8&ved=2ahUKEwijp8zcqPblAhWKo48KHQjCByQQFjAAegQIAxAB&url=http%3A%2F%2Fdocs.nvidia.com%2Fdeeplearning%2Fframeworks%2Fsupport-matrix%2Findex.html&usg=AOvVaw0aLUI0Z098__dP0jB5AyQ3
+
+DOWNLOAD IMAGE:
+sudo docker pull $image name
+eg., image name (nvcr.io/nvidia/tensorflow:$version-py3)
+	sudo docker pull nvcr.io/nvidia/tensorflow:19.06-py3
+
+ALL IMAGES
+sudo docker images
+
+CREATE CONTAINERS
+sudo nvidia-docker run -it --rm --name Re3 -p 8000:8888 -v /home/hdd1/midhilesh/:/workspace/midhilesh/ -e NVIDIA_VISIBLE_DEVICES=1 REPOSITORY:TAG
+ls
+cd workspace/midhilesh
+
+eg., sudo nvidia-docker run -it --rm --name Re3 -p 8000:8888 -v /home/hdd1/midhilesh/:/workspace/midhilesh/ -e NVIDIA_VISIBLE_DEVICES=1 nvcr.io/nvidia/tensorflow:19.06-py3
+
+EXITING DOCKER
+ctrl+D
+
+ALL CONTAINER
+sudo docker ps -a
+
+
+
+ALL EXTRA COMMAND
+/home/hdd1/midhilesh/tracking_wo_bnw/history.txt
+
+
+
+check cuda version ubuntu - cat /usr/local/cuda/version.txt
+check cuda version pytorch - torch.version.cuda	
+
+check ubuntu version - lsb_release -a
+
+
+conda create -n yourenvname python=x.x anaconda
+conda activate 3d
+conda deactivate
+
+conda install pytorch=0.4.0 cuda90 -c pytorch
+
+cuda 9.0 installation on ubuntu 18.04 : https://gist.github.com/andyweizhao/639e94b60c166f57964aafedeb465e90
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

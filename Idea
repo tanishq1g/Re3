@@ -1,0 +1,39 @@
+algo:
+
+#model based on SORT
+
+frame 1->yolov3->bounding boxes->initiliaze trackers with unique tracking ids
+frame 2->yolov3->bounding boxes->Compute distance between every pair of bounding boxes [ output of re3 bb and detected boxes by yolo ] -> Hungarian algorithm -> old objects [detected before, track it normally] , new objects [ Untracked objects, Undetected objects ]
+       ->re3   ->bounding boxes
+	Undetected boxes:
+		predict with re3
+	Untracked boxes:
+		initialize tracker (Tracker Birth) 
+	matched trackers:
+		update lstmState with detector bounding boxes not tracker's DONE
+	Tracker Death:
+		since self.tracker_data contains all the tracked unique id delete the id which is not detected for some k frames also remove that id from the unique id before passing
+
+#doubt:
+If an object not detected:
+	1. It may went away from the frame
+	2. It may be occluded
+How do you identify?
+	current solution: predict for some k frames if not detected delete it.
+
+#developing the distance matrix:
+w1*IOU(detected,predicted)+(1-w1)*cosine_distance(conv5_detected,conv5_predicted)
+
+DeepSORT-> we include deep appearence features both in predicting and distance matrix calculation, but deepsort only matirx calculation
+3dTracking-> very similar to 3dTracker but deals with only 2D and YOLOv3 high FPS.
+
+
+What is object tracking?
+Types of object tracking?
+challenges in object tracking?
+brief explanation of SORT, DeepSORT, DeepMOT, 3dTracker, yoloRe3, Tracking without bells and whistels
+developing a comparision table
+output videos: 	
+
+
+https://towardsdatascience.com/computer-vision-for-tracking-8220759eee85
